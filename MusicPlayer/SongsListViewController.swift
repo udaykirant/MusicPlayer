@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SongsListViewController: UIViewController {
 
+    var interactor = SongsListInteractor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        interactor.getSongsList { (songs) in
+            print(songs)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -8,11 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		8116B1D0205951C900595BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1CF205951C900595BA7 /* AppDelegate.swift */; };
-		8116B1D2205951C900595BA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1D1205951C900595BA7 /* ViewController.swift */; };
+		8116B1D2205951C900595BA7 /* SongsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1D1205951C900595BA7 /* SongsListViewController.swift */; };
 		8116B1D5205951C900595BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8116B1D3205951C900595BA7 /* Main.storyboard */; };
 		8116B1D7205951C900595BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8116B1D6205951C900595BA7 /* Assets.xcassets */; };
 		8116B1DA205951C900595BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8116B1D8205951C900595BA7 /* LaunchScreen.storyboard */; };
 		8116B1E5205951C900595BA7 /* MusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1E4205951C900595BA7 /* MusicPlayerTests.swift */; };
+		8116B1F12059570200595BA7 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1F02059570200595BA7 /* Song.swift */; };
+		8116B1F320595B8E00595BA7 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1F220595B8E00595BA7 /* Author.swift */; };
+		8116B1F520595BE100595BA7 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1F420595BE100595BA7 /* Picture.swift */; };
+		8116B1F820595E2500595BA7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1F720595E2500595BA7 /* APIClient.swift */; };
+		8116B1FB2059746C00595BA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1FA2059746C00595BA7 /* Constants.swift */; };
+		8116B1FE205A1F6800595BA7 /* SongsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1FD205A1F6800595BA7 /* SongsListInteractor.swift */; };
+		8116B203205A51D700595BA7 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B202205A51D700595BA7 /* DateFormatterExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +35,7 @@
 /* Begin PBXFileReference section */
 		8116B1CC205951C900595BA7 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116B1CF205951C900595BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8116B1D1205951C900595BA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8116B1D1205951C900595BA7 /* SongsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListViewController.swift; sourceTree = "<group>"; };
 		8116B1D4205951C900595BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8116B1D6205951C900595BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8116B1D9205951C900595BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +43,13 @@
 		8116B1E0205951C900595BA7 /* MusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8116B1E4205951C900595BA7 /* MusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerTests.swift; sourceTree = "<group>"; };
 		8116B1E6205951C900595BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8116B1F02059570200595BA7 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		8116B1F220595B8E00595BA7 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		8116B1F420595BE100595BA7 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		8116B1F720595E2500595BA7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		8116B1FA2059746C00595BA7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8116B1FD205A1F6800595BA7 /* SongsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListInteractor.swift; sourceTree = "<group>"; };
+		8116B202205A51D700595BA7 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +91,9 @@
 		8116B1CE205951C900595BA7 /* MusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				8116B1F92059744700595BA7 /* Common */,
 				8116B1CF205951C900595BA7 /* AppDelegate.swift */,
-				8116B1D1205951C900595BA7 /* ViewController.swift */,
+				8116B1D1205951C900595BA7 /* SongsListViewController.swift */,
 				8116B1D3205951C900595BA7 /* Main.storyboard */,
 				8116B1D6205951C900595BA7 /* Assets.xcassets */,
 				8116B1D8205951C900595BA7 /* LaunchScreen.storyboard */,
@@ -94,6 +109,52 @@
 				8116B1E6205951C900595BA7 /* Info.plist */,
 			);
 			path = MusicPlayerTests;
+			sourceTree = "<group>";
+		};
+		8116B1EF205954C900595BA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8116B1F02059570200595BA7 /* Song.swift */,
+				8116B1F220595B8E00595BA7 /* Author.swift */,
+				8116B1F420595BE100595BA7 /* Picture.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8116B1F620595E1200595BA7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8116B1F720595E2500595BA7 /* APIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8116B1F92059744700595BA7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8116B201205A51B800595BA7 /* Extensions */,
+				8116B1FC205A1F2800595BA7 /* Interactors */,
+				8116B1EF205954C900595BA7 /* Models */,
+				8116B1F620595E1200595BA7 /* Network */,
+				8116B1FA2059746C00595BA7 /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8116B1FC205A1F2800595BA7 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				8116B1FD205A1F6800595BA7 /* SongsListInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		8116B201205A51B800595BA7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8116B202205A51D700595BA7 /* DateFormatterExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,8 +260,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8116B1D2205951C900595BA7 /* ViewController.swift in Sources */,
+				8116B1F12059570200595BA7 /* Song.swift in Sources */,
+				8116B1F520595BE100595BA7 /* Picture.swift in Sources */,
+				8116B203205A51D700595BA7 /* DateFormatterExtension.swift in Sources */,
+				8116B1D2205951C900595BA7 /* SongsListViewController.swift in Sources */,
+				8116B1F320595B8E00595BA7 /* Author.swift in Sources */,
+				8116B1FB2059746C00595BA7 /* Constants.swift in Sources */,
+				8116B1FE205A1F6800595BA7 /* SongsListInteractor.swift in Sources */,
 				8116B1D0205951C900595BA7 /* AppDelegate.swift in Sources */,
+				8116B1F820595E2500595BA7 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

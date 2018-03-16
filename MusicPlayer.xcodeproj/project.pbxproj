@@ -20,6 +20,11 @@
 		8116B1FB2059746C00595BA7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1FA2059746C00595BA7 /* Constants.swift */; };
 		8116B1FE205A1F6800595BA7 /* SongsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B1FD205A1F6800595BA7 /* SongsListInteractor.swift */; };
 		8116B203205A51D700595BA7 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B202205A51D700595BA7 /* DateFormatterExtension.swift */; };
+		8116B205205A71BA00595BA7 /* SongsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B204205A71BA00595BA7 /* SongsListView.swift */; };
+		8116B208205A746E00595BA7 /* SongsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B206205A746E00595BA7 /* SongsListTableViewCell.swift */; };
+		8116B209205A746E00595BA7 /* SongsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8116B207205A746E00595BA7 /* SongsListTableViewCell.xib */; };
+		8116B20B205ACD2700595BA7 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8116B20A205ACD2700595BA7 /* UIImageViewExtension.swift */; };
+		812D6075205BD9FD008E32C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D6074205BD9FD008E32C8 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 		8116B1FA2059746C00595BA7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8116B1FD205A1F6800595BA7 /* SongsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListInteractor.swift; sourceTree = "<group>"; };
 		8116B202205A51D700595BA7 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
+		8116B204205A71BA00595BA7 /* SongsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListView.swift; sourceTree = "<group>"; };
+		8116B206205A746E00595BA7 /* SongsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsListTableViewCell.swift; sourceTree = "<group>"; };
+		8116B207205A746E00595BA7 /* SongsListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongsListTableViewCell.xib; sourceTree = "<group>"; };
+		8116B20A205ACD2700595BA7 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		812D6074205BD9FD008E32C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,9 @@
 				8116B1F92059744700595BA7 /* Common */,
 				8116B1CF205951C900595BA7 /* AppDelegate.swift */,
 				8116B1D1205951C900595BA7 /* SongsListViewController.swift */,
+				8116B204205A71BA00595BA7 /* SongsListView.swift */,
+				8116B206205A746E00595BA7 /* SongsListTableViewCell.swift */,
+				8116B207205A746E00595BA7 /* SongsListTableViewCell.xib */,
 				8116B1D3205951C900595BA7 /* Main.storyboard */,
 				8116B1D6205951C900595BA7 /* Assets.xcassets */,
 				8116B1D8205951C900595BA7 /* LaunchScreen.storyboard */,
@@ -132,6 +145,7 @@
 		8116B1F92059744700595BA7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				812D6073205BD9E2008E32C8 /* Cache */,
 				8116B201205A51B800595BA7 /* Extensions */,
 				8116B1FC205A1F2800595BA7 /* Interactors */,
 				8116B1EF205954C900595BA7 /* Models */,
@@ -153,8 +167,17 @@
 			isa = PBXGroup;
 			children = (
 				8116B202205A51D700595BA7 /* DateFormatterExtension.swift */,
+				8116B20A205ACD2700595BA7 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		812D6073205BD9E2008E32C8 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				812D6074205BD9FD008E32C8 /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8116B209205A746E00595BA7 /* SongsListTableViewCell.xib in Resources */,
 				8116B1DA205951C900595BA7 /* LaunchScreen.storyboard in Resources */,
 				8116B1D7205951C900595BA7 /* Assets.xcassets in Resources */,
 				8116B1D5205951C900595BA7 /* Main.storyboard in Resources */,
@@ -262,11 +286,15 @@
 			files = (
 				8116B1F12059570200595BA7 /* Song.swift in Sources */,
 				8116B1F520595BE100595BA7 /* Picture.swift in Sources */,
+				8116B20B205ACD2700595BA7 /* UIImageViewExtension.swift in Sources */,
 				8116B203205A51D700595BA7 /* DateFormatterExtension.swift in Sources */,
 				8116B1D2205951C900595BA7 /* SongsListViewController.swift in Sources */,
+				8116B208205A746E00595BA7 /* SongsListTableViewCell.swift in Sources */,
+				812D6075205BD9FD008E32C8 /* Cache.swift in Sources */,
 				8116B1F320595B8E00595BA7 /* Author.swift in Sources */,
 				8116B1FB2059746C00595BA7 /* Constants.swift in Sources */,
 				8116B1FE205A1F6800595BA7 /* SongsListInteractor.swift in Sources */,
+				8116B205205A71BA00595BA7 /* SongsListView.swift in Sources */,
 				8116B1D0205951C900595BA7 /* AppDelegate.swift in Sources */,
 				8116B1F820595E2500595BA7 /* APIClient.swift in Sources */,
 			);
@@ -358,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -409,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -422,7 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P9N8KSUXYZ;
+				DEVELOPMENT_TEAM = 4FGQMH8WW3;
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MusicPlayer;
@@ -437,7 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P9N8KSUXYZ;
+				DEVELOPMENT_TEAM = 4FGQMH8WW3;
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MusicPlayer;

@@ -10,20 +10,17 @@ import UIKit
 
 class SongsListViewController: UIViewController {
 
+    @IBOutlet var songsListView: SongsListView!
     var interactor = SongsListInteractor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.getSongsList { (songs) in
-            print(songs)
+            //Performing UI operations on main thread
+            DispatchQueue.main.async {
+                self.songsListView.updateView(WithSongs: songs)
+            }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 

@@ -11,6 +11,7 @@ import UIKit
 protocol SongsListTableViewCellDeleagte: class {
     func didTapOnPlayButton(ForSong song: URL?)
 }
+
 class SongsListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var songImageView: UIImageView!

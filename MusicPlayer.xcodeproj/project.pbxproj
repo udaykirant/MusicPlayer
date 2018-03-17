@@ -80,6 +80,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8105436B205CD6550000D3C8 /* SongsList */ = {
+			isa = PBXGroup;
+			children = (
+				8116B1D1205951C900595BA7 /* SongsListViewController.swift */,
+				8116B204205A71BA00595BA7 /* SongsListView.swift */,
+				8116B206205A746E00595BA7 /* SongsListTableViewCell.swift */,
+				8116B207205A746E00595BA7 /* SongsListTableViewCell.xib */,
+			);
+			path = SongsList;
+			sourceTree = "<group>";
+		};
 		8116B1C3205951C900595BA7 = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				8116B1F92059744700595BA7 /* Common */,
+				8105436B205CD6550000D3C8 /* SongsList */,
 				8116B1CF205951C900595BA7 /* AppDelegate.swift */,
-				8116B1D1205951C900595BA7 /* SongsListViewController.swift */,
-				8116B204205A71BA00595BA7 /* SongsListView.swift */,
-				8116B206205A746E00595BA7 /* SongsListTableViewCell.swift */,
-				8116B207205A746E00595BA7 /* SongsListTableViewCell.xib */,
 				8116B1D3205951C900595BA7 /* Main.storyboard */,
 				8116B1D6205951C900595BA7 /* Assets.xcassets */,
 				8116B1D8205951C900595BA7 /* LaunchScreen.storyboard */,

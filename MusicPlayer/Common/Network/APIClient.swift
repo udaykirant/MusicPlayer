@@ -9,17 +9,17 @@
 import Foundation
 
 class APIClient {
-    class func getRequestWithURL(_ urlPath: String, completion: @escaping (_ jsonResponse : Data?)-> Void) {
+    class func getRequestWithURL(_ urlPath: String, completion: @escaping (_ jsonResponse : Data?, _ error: Error?)-> Void) {
         guard let url = URL(string: urlPath) else {
-            completion(nil)
+            completion(nil, nil)
             return
         }
         let task = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             guard let _data = data else {
-                completion(nil)
+                completion(nil, error)
                 return
             }
-            completion(_data)
+            completion(_data, error)
         })
         task.resume()
     }

@@ -15,7 +15,11 @@ class SongsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.getSongsList { (songs) in
+        fetchSongsList()
+    }
+    
+    private func fetchSongsList() {
+        interactor.getSongsList { (songs, error) in
             //Performing UI operations on main thread
             DispatchQueue.main.async {
                 self.songsListView.updateView(WithSongs: songs)

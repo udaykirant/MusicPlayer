@@ -15,7 +15,7 @@ extension UIImageView {
             self.image = cachedImage
             return
         }
-        APIClient.getRequestWithURL(url.absoluteString) { (data) in
+        APIClient.getRequestWithURL(url.absoluteString) { (data, error) in
             guard let _data = data else {
                 return
             }

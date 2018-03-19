@@ -11,6 +11,7 @@ import UIKit
 
 extension UIImageView {
     func loadImage(fromURL url: URL)  {
+        //Fetching images from cache
         if let cachedImage = Cache.shared.imageCache.object(forKey: url.absoluteString as NSString) {
             self.image = cachedImage
             return
@@ -21,6 +22,7 @@ extension UIImageView {
             }
             DispatchQueue.main.async {
                 if let image = UIImage(data: _data) {
+                    //Caching images temporarily
                     Cache.shared.imageCache.setObject(image, forKey: url.absoluteString as NSString)
                     self.image = image
                 }

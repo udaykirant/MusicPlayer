@@ -12,30 +12,91 @@ import AVFoundation
 class SongsListView: UIView {
 
     @IBOutlet weak var tableView: UITableView!
-    var player : AVPlayer?
     var songsList: [Song] = []
-
+    var playerView: PlayerView?
+    var playerViewTopConstraint: NSLayoutConstraint?
     override func awakeFromNib() {
         super.awakeFromNib()
         configureTableView()
     }
-    
+
     private func configureTableView() {
         tableView.register(UINib(nibName: String(describing: SongsListTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: String(describing: SongsListTableViewCell.self))
         tableView.tableFooterView = UIView()
     }
     
+    private func configurePlayerView() {
+        if let _playerView = PlayerView().loadNib(withName: String(describing: PlayerView.self)) as? PlayerView {
+            _playerView.delegate = self
+            playerView = _playerView
+        }
+    }
+    
+    private func displayPlayerView(withURL url: URL) {
+        configurePlayerView()
+        if let _playerView = playerView {
+            addSubview(_playerView)
+            bringSubview(toFront: _playerView)
+            addPlayerViewConstraints()
+            _playerView.playSong(withURL: url)
+        }
+    }
+    
+    private func removePlayerView() {
+        playerView?.pauseSong()
+        playerView?.removeFromSuperview()
+        playerView = nil
+        playerViewTopConstraint = nil
+    }
+    
+    private func addPlayerViewConstraints() {
+        if let _playerView = playerView {
+            _playerView.translatesAutoresizingMaskIntoConstraints = false
+            let leadingConstraint = _playerView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
+            let topConstraint = _playerView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -(Constants.miniPlayerViewToptConstant))
+            let widthConstraint = _playerView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.0)
+            let heightConstraint = _playerView.heightAnchor.constraint(equalTo: self.heightAnchor, constant: Constants.mainPlayerViewHeightConstant)
+            addConstraints([leadingConstraint, topConstraint, widthConstraint, heightConstraint])
+            playerViewTopConstraint = topConstraint
+        }
+    }
+    
+    private func presentPlayerView(withAnimation animate:Bool, isMiniPalyer: Bool) {
+        if let _constraint = playerViewTopConstraint {
+             removeConstraint(_constraint)
+        }
+        if animate {
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                self.layoutMainPlayerView(shouldMinimize: isMiniPalyer)
+            }, completion: nil)
+        } else {
+           layoutMainPlayerView(shouldMinimize: isMiniPalyer)
+        }
+    }
+    
+    func layoutMainPlayerView(shouldMinimize: Bool) {
+        if shouldMinimize {
+            self.playerViewTopConstraint = self.playerView?.topAnchor.constraint(equalTo: self.bottomAnchor, constant: -(Constants.miniPlayerViewToptConstant))
+        } else {
+            self.playerViewTopConstraint = self.playerView?.topAnchor.constraint(equalTo: self.topAnchor, constant: -(Constants.mainPlayerViewHeightConstant))
+        }
+        self.playerViewTopConstraint?.isActive = true
+        self.layoutIfNeeded()
+    }
+    
+    
     func updateView(WithSongs songs: [Song]) {
         songsList = songs
         tableView.reloadData()
     }
+    
 }
 
 extension SongsListView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(Constants.songsListCellHeight)
+        return Constants.songsListCellHeight
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return songsList.count
@@ -54,18 +115,27 @@ extension SongsListView: UITableViewDelegate, UITableViewDataSource {
 
 extension SongsListView: SongsListTableViewCellDeleagte {
     func didTapOnPlayButton(ForSong song: URL?) {
-        if let _player = player {
-            _player.pause()
-            player = nil
+        if let _ = playerView {
+            removePlayerView()
         } else {
             if let url = song {
-                player = AVPlayer(url: url)
-                let playerLayer = AVPlayerLayer(player: player)
-                playerLayer.frame = self.bounds
-                self.layer.addSublayer(playerLayer)
-                player?.play()
+                 displayPlayerView(withURL: url)
             }
         }
-        
+    }
+}
+
+extension SongsListView: PlayerViewDelegate {
+    func displayMainPlayerView() {
+        presentPlayerView(withAnimation: true, isMiniPalyer: false)
+    }
+    
+    func dismissMainPlayerView() {
+        presentPlayerView(withAnimation: true, isMiniPalyer: true)
+        removePlayerView()
+    }
+    
+    func displayMiniPlayerView() {
+        presentPlayerView(withAnimation: true, isMiniPalyer: true)
     }
 }

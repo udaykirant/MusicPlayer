@@ -36,36 +36,85 @@ class PlayerView: UIView {
         self.layer.addSublayer(playerLayer)
     }
     
-    func playSong(withURL url: URL) {
-        configureAVPlayer(WithURL: url)
+    func songTotalDuration() -> String {
+        let totalDuration = ""
+        if let duration = player?.currentItem?.asset.duration {
+            let seconds = CMTimeGetSeconds(duration)
+            return totalDuration.readableTimeFormat(forDuration: seconds)
+        }
+        return totalDuration
+    }
+    
+    func songCurrentDuration() -> String {
+        let currentDuration = ""
+        if let duration = player?.currentTime() {
+            let seconds = CMTimeGetSeconds(duration)
+            return currentDuration.readableTimeFormat(forDuration: seconds)
+        }
+        return currentDuration
+    }
+    
+    func playSong(_ song: Song) {
+        miniplayerView.updateView(withSong: song)
+        mainPlayerView.updateMainPlayerView(withSong: song)
+        configureAVPlayer(WithURL: song.audioLink)
         playSong()
     }
     
     private func playSong() {
         player?.play()
+        
+        //Configure Play buttons
+        miniplayerView.playButton.isSelected = true
+        mainPlayerView.playerPlayButton.isSelected = true
+        
+        //Configure seekbar
+        if let duration = player?.currentItem?.asset.duration {
+            mainPlayerView.songProgressSlider.value = 0
+            mainPlayerView.songProgressSlider.minimumValue = 0
+            mainPlayerView.songProgressSlider.maximumValue = Float(CMTimeGetSeconds(duration))
+            self.mainPlayerView.totalTimeLabel.text = songTotalDuration()
+        }
+        player?.addPeriodicTimeObserver(forInterval: CMTimeMakeWithSeconds(1, 1), queue: DispatchQueue.main, using: { (time) in
+            if let duration = self.player?.currentTime() {
+                self.mainPlayerView.songProgressSlider.value = Float(CMTimeGetSeconds(duration))
+                self.mainPlayerView.currentTimeLabel.text = self.songCurrentDuration()
+            }
+            
+        })
     }
     
     func pauseSong() {
         player?.pause()
+        miniplayerView.playButton.isSelected = false
+        mainPlayerView.playerPlayButton.isSelected = false
     }
 }
 
 extension PlayerView: MiniPlayerViewDelegate {
-    func didTapOnMoreButton() {
-        delegate?.displayMainPlayerView()
+    func didTapOnMoreButton(_ sender: UIButton) {
+         delegate?.displayMainPlayerView()
+    }
+    
+    func didTapOnPlayButton(_ sender: UIButton) {
+        if sender.isSelected {
+            pauseSong()
+        } else {
+            playSong()
+        }
     }
 }
 
 extension PlayerView: MainPlayerViewDelegate {
     func didTapOnDropDownButton() {
-        if #available(iOS 10.0, *) {
-            if player?.timeControlStatus == AVPlayerTimeControlStatus.playing {
-                delegate?.displayMiniPlayerView()
-            } else {
-                delegate?.dismissMainPlayerView()
-            }
-        } else {
-            delegate?.dismissMainPlayerView()
-        }
+        delegate?.displayMiniPlayerView()
+    }
+    
+    func didTapOnNextButton() {
+        
+    }
+    
+    func didTapOnPreviousButton() {
+        
     }
 }

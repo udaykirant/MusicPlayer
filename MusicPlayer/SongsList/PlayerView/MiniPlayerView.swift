@@ -9,7 +9,8 @@
 import UIKit
 
 protocol MiniPlayerViewDelegate: class {
-    func didTapOnMoreButton()
+    func didTapOnMoreButton(_ sender: UIButton)
+    func didTapOnPlayButton(_ sender: UIButton)
 }
 class MiniPlayerView: UIView {
     
@@ -21,10 +22,19 @@ class MiniPlayerView: UIView {
     weak var delegate: MiniPlayerViewDelegate?
     
     @IBAction func didTapOnPlayButton(_ sender: Any) {
-        playButton.isSelected = !playButton.isSelected
+        if let _sender = sender as? UIButton {
+            delegate?.didTapOnPlayButton(_sender)
+        }
     }
     
     @IBAction func didTapOnMoreButton(_ sender: Any) {
-        delegate?.didTapOnMoreButton()
+        if let _sender = sender as? UIButton {
+            delegate?.didTapOnMoreButton(_sender)
+        }
+    }
+    
+    func updateView(withSong song: Song) {
+        songNameLabel.text = song.name
+        authorNameLabel.text = song.author.name
     }
 }

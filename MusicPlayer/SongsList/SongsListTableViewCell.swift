@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SongsListTableViewCellDeleagte: class {
-    func didTapOnPlayButton(ForSong song: URL?)
+    func didTapOnPlayButton(ForSong song: Song)
 }
 
 class SongsListTableViewCell: UITableViewCell {
@@ -24,7 +24,7 @@ class SongsListTableViewCell: UITableViewCell {
     @IBOutlet weak var playButton: UIButton!
     
     weak var deleagte: SongsListTableViewCellDeleagte?
-    var audioURL: URL?
+    var song: Song?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,11 +51,13 @@ class SongsListTableViewCell: UITableViewCell {
         authorNameLabel.text = song.author.name
         songImageView.loadImage(fromURL: song.picture.url)
         authorImageView.loadImage(fromURL: song.author.picture.url)
-        audioURL = song.audioLink
+        self.song = song
     }
     
     @IBAction func didTapOnPlayButton(_ sender: Any) {
-        playButton.isSelected = !playButton.isSelected
-        deleagte?.didTapOnPlayButton(ForSong: audioURL)
+        if let _song = song {
+            playButton.isSelected = !playButton.isSelected
+            deleagte?.didTapOnPlayButton(ForSong: _song)
+        }
     }
 }

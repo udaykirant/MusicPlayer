@@ -33,13 +33,13 @@ class SongsListView: UIView {
         }
     }
     
-    private func displayPlayerView(withURL url: URL) {
+    private func displayPlayerView(forSong song: Song) {
         configurePlayerView()
         if let _playerView = playerView {
             addSubview(_playerView)
             bringSubview(toFront: _playerView)
             addPlayerViewConstraints()
-            _playerView.playSong(withURL: url)
+            _playerView.playSong(song)
         }
     }
     
@@ -114,13 +114,11 @@ extension SongsListView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SongsListView: SongsListTableViewCellDeleagte {
-    func didTapOnPlayButton(ForSong song: URL?) {
+    func didTapOnPlayButton(ForSong song: Song) {
         if let _ = playerView {
             removePlayerView()
         } else {
-            if let url = song {
-                 displayPlayerView(withURL: url)
-            }
+            displayPlayerView(forSong: song)
         }
     }
 }

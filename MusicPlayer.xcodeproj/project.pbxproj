@@ -31,6 +31,7 @@
 		812D6075205BD9FD008E32C8 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D6074205BD9FD008E32C8 /* Cache.swift */; };
 		81498DF9205CFCD400454549 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81498DF8205CFCD400454549 /* ViewExtension.swift */; };
 		81D4064B2060D6A100900BA2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4064A2060D6A100900BA2 /* StringExtension.swift */; };
+		81D4064D20626C7A00900BA2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4064C20626C7A00900BA2 /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		812D6074205BD9FD008E32C8 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		81498DF8205CFCD400454549 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		81D4064A2060D6A100900BA2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		81D4064C20626C7A00900BA2 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				8116B202205A51D700595BA7 /* DateFormatterExtension.swift */,
+				81D4064C20626C7A00900BA2 /* DateExtension.swift */,
 				8116B20A205ACD2700595BA7 /* UIImageViewExtension.swift */,
 				81498DF8205CFCD400454549 /* ViewExtension.swift */,
 				81D4064A2060D6A100900BA2 /* StringExtension.swift */,
@@ -324,6 +327,7 @@
 				8116B20B205ACD2700595BA7 /* UIImageViewExtension.swift in Sources */,
 				81054372205CDC860000D3C8 /* MiniPlayerView.swift in Sources */,
 				8116B203205A51D700595BA7 /* DateFormatterExtension.swift in Sources */,
+				81D4064D20626C7A00900BA2 /* DateExtension.swift in Sources */,
 				8116B1D2205951C900595BA7 /* SongsListViewController.swift in Sources */,
 				8116B208205A746E00595BA7 /* SongsListTableViewCell.swift in Sources */,
 				812D6075205BD9FD008E32C8 /* Cache.swift in Sources */,

@@ -30,3 +30,9 @@ struct Song: Codable
     }
 }
 
+extension Song: Equatable {
+    static func ==(lhs: Song, rhs: Song) -> Bool {
+        return Int(lhs.id) == Int(rhs.id)
+    }
+}
+

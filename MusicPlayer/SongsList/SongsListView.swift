@@ -91,6 +91,40 @@ class SongsListView: UIView {
         tableView.reloadData()
     }
     
+    func previousSong() -> Song {
+        if currentSongIndex() == 0 {
+            return songsList[songsList.count - 1]
+        }
+        
+        return songsList[currentSongIndex() - 1]
+    }
+    
+    func nextSong() -> Song {
+        if currentSongIndex() == songsList.count - 1 {
+            return songsList[0]
+        }
+        
+        return songsList[currentSongIndex() + 1]
+    }
+    
+    func currentSongIndex() -> Int {
+        if let currentSong = playerView?.currentSong {
+            return songsList.index(of: currentSong) ?? 0
+        }
+        
+        return 0
+    }
+    
+    func updatePlaybuttonForCell(withSong song: Song?) {
+        guard let _song = song else { return }
+        let index = songsList.index(of: _song) ?? 0
+        guard let songsListTableViewCell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SongsListTableViewCell else { return }
+        if let _currentSong = playerView?.currentSong, _currentSong == _song {
+            songsListTableViewCell.playButton.isSelected = playerView?.songIsPlaying() ?? false
+        } else {
+            songsListTableViewCell.playButton.isSelected = false
+        }
+    }
 }
 
 extension SongsListView: UITableViewDelegate, UITableViewDataSource {
@@ -105,8 +139,14 @@ extension SongsListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let songsListTableViewCell = tableView.dequeueReusableCell(withIdentifier: String(describing: SongsListTableViewCell.self),
                                                                       for: indexPath) as? SongsListTableViewCell {
+            let song = songsList[indexPath.row]
             songsListTableViewCell.deleagte = self
-            songsListTableViewCell.updateCell(WithSong: songsList[indexPath.row])
+            songsListTableViewCell.updateCell(WithSong: song)
+            if let _song = playerView?.currentSong, _song == song {
+                songsListTableViewCell.playButton.isSelected = playerView?.songIsPlaying() ?? false
+            } else {
+                    songsListTableViewCell.playButton.isSelected = false
+            }
             return songsListTableViewCell
         }
         return UITableViewCell()
@@ -114,11 +154,19 @@ extension SongsListView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SongsListView: SongsListTableViewCellDeleagte {
-    func didTapOnPlayButton(ForSong song: Song) {
-        if let _ = playerView {
+    func didTapOnPlayButton(ForSong song: Song, _ sender: UIButton) {
+        let previousSong = playerView?.currentSong
+        if sender.isSelected {
             removePlayerView()
+            updatePlaybuttonForCell(withSong: previousSong)
         } else {
-            displayPlayerView(forSong: song)
+            if let _player = playerView {
+                _player.playSong(song)
+            } else {
+                displayPlayerView(forSong: song)
+            }
+            updatePlaybuttonForCell(withSong: previousSong)
+            updatePlaybuttonForCell(withSong: song)
         }
     }
 }
@@ -131,9 +179,26 @@ extension SongsListView: PlayerViewDelegate {
     func dismissMainPlayerView() {
         presentPlayerView(withAnimation: true, isMiniPalyer: true)
         removePlayerView()
+        updatePlaybuttonForCell(withSong: playerView?.currentSong)
     }
     
     func displayMiniPlayerView() {
         presentPlayerView(withAnimation: true, isMiniPalyer: true)
+    }
+    
+    func playPreviousSong() {
+        playerView?.playSong(previousSong())
+    }
+    
+    func playNextSong() {
+        playerView?.playSong(nextSong())
+    }
+    
+    func playSong() {
+        updatePlaybuttonForCell(withSong: playerView?.currentSong)
+    }
+    
+    func didPauseSong() {
+        updatePlaybuttonForCell(withSong: playerView?.currentSong)
     }
 }

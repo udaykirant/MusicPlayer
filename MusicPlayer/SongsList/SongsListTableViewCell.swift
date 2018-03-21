@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SongsListTableViewCellDeleagte: class {
-    func didTapOnPlayButton(ForSong song: Song)
+    func didTapOnPlayButton(ForSong song: Song, _ sender: UIButton)
 }
 
 class SongsListTableViewCell: UITableViewCell {
@@ -51,13 +51,14 @@ class SongsListTableViewCell: UITableViewCell {
         authorNameLabel.text = song.author.name
         songImageView.loadImage(fromURL: song.picture.url)
         authorImageView.loadImage(fromURL: song.author.picture.url)
+        songTypeLabel.text = "#HipHop" //Temporary value , as this data isn't available from API response
+        songModifiedLabel.text = song.modifiedOn.differenceWithCurrentDate()
         self.song = song
     }
     
     @IBAction func didTapOnPlayButton(_ sender: Any) {
         if let _song = song {
-            playButton.isSelected = !playButton.isSelected
-            deleagte?.didTapOnPlayButton(ForSong: _song)
+            deleagte?.didTapOnPlayButton(ForSong: _song, sender as! UIButton)
         }
     }
 }

@@ -161,6 +161,17 @@ extension PlayerView: MainPlayerViewDelegate {
     }
     
     func didTapOnPreviousButton() {
-        delegate?.playPreviousSong()
+        if let duration = self.player?.currentTime() {
+            if CMTimeGetSeconds(duration) > 3 {
+                delegate?.playPreviousSong()
+            } else {
+                pauseSong()
+                let value = CMTimeMakeWithSeconds(Float64(0), 1);
+                player?.seek(to: value)
+                mainPlayerView.songProgressSlider.value = 0
+                playSong()
+            }
+        }
+        
     }
 }

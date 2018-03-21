@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Author: Codable {
+struct Author: Codable {
     var name: String
     var picture: Picture
     

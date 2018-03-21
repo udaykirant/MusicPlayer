@@ -187,11 +187,17 @@ extension SongsListView: PlayerViewDelegate {
     }
     
     func playPreviousSong() {
+        let _previousSong = playerView?.currentSong
         playerView?.playSong(previousSong())
+        updatePlaybuttonForCell(withSong: _previousSong)
+        updatePlaybuttonForCell(withSong: playerView?.currentSong)
     }
     
     func playNextSong() {
+        let previousSong = playerView?.currentSong
         playerView?.playSong(nextSong())
+        updatePlaybuttonForCell(withSong: previousSong)
+        updatePlaybuttonForCell(withSong: playerView?.currentSong)
     }
     
     func playSong() {
